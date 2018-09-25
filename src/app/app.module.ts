@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {MatRangeDatepickerModule, MatRangeNativeDateModule} from "../../mat-range-datepicker/src/public-api";
+import {MatRangeDatepickerModule, MatRangeNativeDateModule} from '../../mat-range-datepicker/src/public-api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
@@ -84,7 +84,7 @@ const _List = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    MatRangeNativeDateModule,    
+    MatRangeNativeDateModule,
     MatRangeDatepickerModule,
     BrowserAnimationsModule,
     ..._List,

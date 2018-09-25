@@ -195,7 +195,7 @@ export class matRangeDatepicker<D> implements OnDestroy, CanColor {
   _beginDate: D | null;
 
   _initBeginDate: D | null;
-  
+
 
   /** End of dates interval. */
   @Input()
@@ -286,7 +286,7 @@ export class matRangeDatepicker<D> implements OnDestroy, CanColor {
   @Output('opened') openedStream: EventEmitter<void> = new EventEmitter<void>();
 
   /** Emits when the datepicker has been closed. */
-  @Output('closed') closedStream: EventEmitter<void> = new EventEmitter<void>();
+  @Output('closed') closedStream: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
   /** Whether the calendar is open. */
@@ -477,27 +477,26 @@ export class matRangeDatepicker<D> implements OnDestroy, CanColor {
       });
     }
 
-    const completeClose = () => {
+    const completeClose = (apply: boolean) => {
       // The `_opened` could've been reset already if
       // we got two events in quick succession.
       if (this._opened) {
         this._opened = false;
-        this.closedStream.emit();
+        this.closedStream.emit(apply);
         this._focusedElementBeforeOpen = null;
       }
     };
 
-    if (this._focusedElementBeforeOpen &&
-      typeof this._focusedElementBeforeOpen.focus === 'function') {
+    if (this._focusedElementBeforeOpen && typeof this._focusedElementBeforeOpen.focus === 'function') {
       // Because IE moves focus asynchronously, we can't count on it being restored before we've
       // marked the datepicker as closed. If the event fires out of sequence and the element that
       // we're refocusing opens the datepicker on focus, the user could be stuck with not being
       // able to close the calendar at all. We work around it by making the logic, that marks
       // the datepicker as closed, async as well.
       this._focusedElementBeforeOpen.focus();
-      setTimeout(completeClose);
+      setTimeout(() => { completeClose(options ? options.apply : false); });
     } else {
-      completeClose();
+      completeClose(options ? options.apply : false);
     }
   }
 
@@ -566,7 +565,7 @@ export class matRangeDatepicker<D> implements OnDestroy, CanColor {
   private _createPopupPositionStrategy(): PositionStrategy {
     return this._overlay.position()
       .flexibleConnectedTo(this._datepickerInput.getPopupConnectionElementRef())
-      .withFlexibleDimensions(false)
+      .withFlexibleDimensions(true)
       .withViewportMargin(8)
       .withPush(false)
       .withPositions([

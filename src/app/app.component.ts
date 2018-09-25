@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
-import {matRangeDatepickerInputEvent, matRangeDatepickerRangeValue} from "../../mat-range-datepicker/src/public-api";
+import {matRangeDatepickerInputEvent, matRangeDatepickerRangeValue} from '../../mat-range-datepicker/src/public-api';
 /** @title Datepicker selected value */
 @Component({
   selector: 'app-root',
@@ -13,8 +13,17 @@ export class AppComponent {
     lastDateInput: matRangeDatepickerRangeValue<Date>  | null;
     lastDateChange: matRangeDatepickerRangeValue<Date>  | null;
 
-    onDateInput = (e: matRangeDatepickerInputEvent<Date>) => this.lastDateInput = e.value as matRangeDatepickerRangeValue<Date>;
-    onDateChange = (e: matRangeDatepickerInputEvent<Date>) => this.lastDateChange = e.value as matRangeDatepickerRangeValue<Date>;
+    onDateInput = (e: matRangeDatepickerInputEvent<Date>) => {
+      this.lastDateInput = e.value as matRangeDatepickerRangeValue<Date>;
+      console.log(this.lastDateInput);
+    }
+    onDateChange = (e: matRangeDatepickerInputEvent<Date>) => {
+      this.lastDateChange = e.value as matRangeDatepickerRangeValue<Date>;
+      console.log(this.lastDateChange);
+    }
+
+    onClosed = (apply) => { console.log(apply); };
+
 }
 
 

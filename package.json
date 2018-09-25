@@ -11,19 +11,24 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "build:lib": "rimraf dist && ng-packagr -p mat-range-datepicker/package.json && cp mat-range-datepicker/src/*css dist",
+    "build:lib": "rimraf dist && ng-packagr -p mat-range-datepicker/package.json && npm run copy-bundle",
+    "copy-bundle": "node copy-bundle",
     "packagr": "ng-packagr -p ng-package.json"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "copy": "^0.3.2",
+    "copy-dir": "^0.4.0",
+    "i": "^0.3.6"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.5.0",
     "@angular-devkit/schematics": "^0.5.0",
+    "@angular/animations": "6.0.3",
     "@angular/cdk": "6.0.3",
     "@angular/cli": "6.0.3",
     "@angular/common": "6.0.3",
     "@angular/compiler": "6.0.3",
-    "@angular/animations": "6.0.3",
     "@angular/compiler-cli": "6.0.3",
     "@angular/core": "6.0.3",
     "@angular/forms": "6.0.3",
@@ -56,7 +61,7 @@
     "tsickle": "^0.27.3",
     "tslib": "^1.7.1",
     "tslint": "~5.9.0",
-    "zone.js": "^0.8.26",
-    "typescript": "~2.7.2"
+    "typescript": "~2.7.2",
+    "zone.js": "^0.8.26"
   }
 }

@@ -1,9 +1,14 @@
 {
-  "name": "mat-range-datepicker",
-  "version": "0.2.0",
-  "repository": "https://github.com/Sugarball/mat-range-datepicker",
-  "keywords": ["angular", "material", "datepicker", "range datepicker"],
-  "author": "sugarball <jayden@interactivelabs.co>",
+  "name": "mat-range-datepick",
+  "version": "1.0.0",
+  "repository": "https://github.com/ericferreira1992/mat-range-datepicker",
+  "keywords": [
+    "angular",
+    "material",
+    "datepicker",
+    "range datepicker"
+  ],
+  "author": "ericferreira1992 <ericferreira1992@gmail.com>",
   "license": "MIT",
   "private": false,
   "peerDependencies": {
